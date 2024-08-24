@@ -8,7 +8,6 @@ const setPathName = (dir: string) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/cash/",
   resolve: {
     alias: {
       "@": setPathName("./src"),
