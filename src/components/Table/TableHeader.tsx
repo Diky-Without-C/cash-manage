@@ -1,15 +1,15 @@
-import { DateAmountProps } from "./table.type";
+import { WEEKS } from "@/constants";
 
-export default function Header({ dateAmount }: DateAmountProps) {
+export default function Header() {
   return (
     <thead>
       <tr className="text-md border bg-blue-600 font-semibold uppercase tracking-wide text-white">
         <th className="w-[2rem] border-x text-center">No</th>
         <th className="w-[18rem] border-x text-center">Name</th>
-        {Array.from({ length: dateAmount }).map((_, i) => {
+        {WEEKS.map((week) => {
           return (
-            <th key={i} className="w-[6rem] border-x text-center">
-              <span> week {i + 1} </span>
+            <th key={week} className="w-[6rem] border-x text-center">
+              <span> {week} </span>
             </th>
           );
         })}

@@ -4,9 +4,9 @@ import Footer from "./TableFooter";
 import Total from "./TableTotal";
 import Name from "./TableName";
 import Payment from "./TablePayment";
-import { TableProps } from "./table.type";
+import { StudentsProps } from "./table.type";
 
-export default function Body({ students, dateAmount }: TableProps) {
+export default function Body({ students }: StudentsProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [isClick, setIsClick] = useState(false);
 
@@ -30,15 +30,15 @@ export default function Body({ students, dateAmount }: TableProps) {
             <Name
               className={`${isSelected && isClick ? "w-full" : "w-0"}`}
               onClick={() => handleClick(index)}
-              {...{ student, dateAmount, index }}
+              {...{ student, index }}
             />
-            <Payment {...{ student, dateAmount }} />
-            <Total {...{ student }} />
+            <Payment student={student} />
+            <Total student={student} />
           </tr>
         );
       })}
 
-      <Footer {...{ students, dateAmount }} />
+      <Footer students={students} />
     </tbody>
   );
 }

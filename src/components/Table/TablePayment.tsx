@@ -3,9 +3,10 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import useUpdateStudent from "@hooks/useUpdateStudent";
 import isPaymentComplete from "@/utils/isPaymentComplete";
 import useGlobalContext from "@context/globalContext";
-import { PaymentProps } from "./table.type";
+import { StudentProps } from "./table.type";
+import { WEEKS } from "@/constants";
 
-export default function Payment({ student, dateAmount }: PaymentProps) {
+export default function Payment({ student }: StudentProps) {
   const payments = [...student.payments];
   const [inputs, setInputs] = useState(payments);
   const handleUpdateStudent = useUpdateStudent();
@@ -17,7 +18,7 @@ export default function Payment({ student, dateAmount }: PaymentProps) {
 
   const handleClick = (id: string, i: number) => {
     if (!isLogin) return;
-    const baseRecord = Array.from({ length: dateAmount }).fill(0);
+    const baseRecord = Array.from({ length: WEEKS.length }).fill(0);
     const paymentsRecord = baseRecord.map((_, i) => payments[i] || 0);
     paymentsRecord[i] = paymentsRecord[i] === 5000 ? 0 : 5000;
 
@@ -58,7 +59,7 @@ export default function Payment({ student, dateAmount }: PaymentProps) {
 
   return (
     <>
-      {Array.from({ length: dateAmount }).map((_, i) => {
+      {WEEKS.map((_, i) => {
         const payment = payments[i];
         return (
           <td

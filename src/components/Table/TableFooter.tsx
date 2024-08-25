@@ -5,9 +5,10 @@ import { ModalRef, SubmitEvent } from "@components/Modal/modal.type";
 import useAddStudent from "@hooks/useAddStudent";
 import formatNumber from "@/utils/formatNumber";
 import useGlobalContext from "@context/globalContext";
-import { TableProps } from "./table.type";
+import { WEEKS } from "@/constants";
+import { StudentsProps } from "./table.type";
 
-export default function Footer({ students, dateAmount }: TableProps) {
+export default function Footer({ students }: StudentsProps) {
   const [name, setName] = useState("");
   const modalRef = useRef<ModalRef>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -84,7 +85,7 @@ export default function Footer({ students, dateAmount }: TableProps) {
       ) : (
         <td className="border"></td>
       )}
-      {Array.from({ length: dateAmount }).map((_, i) => {
+      {WEEKS.map((_, i) => {
         return <td key={i} className="border text-center"></td>;
       })}
       <td className="border text-right">
