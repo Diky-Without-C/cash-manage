@@ -85,8 +85,8 @@ export default function Footer({ students }: StudentsProps) {
       ) : (
         <td className="border"></td>
       )}
-      {WEEKS.map((_, i) => {
-        return <td key={i} className="border text-center"></td>;
+      {WEEKS.map((week) => {
+        return <td key={week} className="border text-center"></td>;
       })}
       <td className="border text-right">
         <span>{formatNumber(totalStudentsPayments)}</span>
