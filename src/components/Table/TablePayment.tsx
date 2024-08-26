@@ -3,8 +3,8 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import useUpdateStudent from "@hooks/useUpdateStudent";
 import isPaymentComplete from "@/utils/isPaymentComplete";
 import useGlobalContext from "@context/globalContext";
+import { PAYMENT_COST, WEEKS } from "@/constants";
 import { StudentProps } from "./table.type";
-import { WEEKS } from "@/constants";
 
 export default function Payment({ student }: StudentProps) {
   const payments = [...student.payments];
@@ -20,7 +20,7 @@ export default function Payment({ student }: StudentProps) {
     if (!isLogin) return;
     const baseRecord = Array.from({ length: WEEKS.length }).fill(0);
     const paymentsRecord = baseRecord.map((_, i) => payments[i] || 0);
-    paymentsRecord[i] = paymentsRecord[i] === 5000 ? 0 : 5000;
+    paymentsRecord[i] = paymentsRecord[i] === PAYMENT_COST ? 0 : PAYMENT_COST;
 
     if (!isEditActive) {
       setInputs(paymentsRecord);
@@ -71,7 +71,7 @@ export default function Payment({ student }: StudentProps) {
               <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center ring-blue-500 hover:ring-1">
                 {payment !== 0 && (
                   <span>
-                    {payment === 5000 ? (
+                    {payment === PAYMENT_COST ? (
                       <CheckIcon className="size-5" />
                     ) : (
                       payment
