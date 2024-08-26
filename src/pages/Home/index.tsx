@@ -12,7 +12,7 @@ export default function Home() {
     "student-list",
     data.students,
   );
-  const [isLogin, _] = useLocalStorage<boolean>("isLogin", false);
+  const [isLogin] = useLocalStorage<boolean>("isLogin", false);
   const [students, setStudents] = useState<Student[]>(studentList);
   const { setData } = useGlobalContext();
 
