@@ -1,4 +1,5 @@
 import { Student } from "@lib/firebase/data.type";
+import { WEEKS } from "@/constants";
 
 export default function createJSON(students: Student[]) {
   const data = students.map((student, i) => {
@@ -11,8 +12,8 @@ export default function createJSON(students: Student[]) {
     const baseRecord = Array.from({ length: 20 }).fill(0);
     const paymentsRecord = baseRecord.map((_, i) => payments[i] || 0);
 
-    paymentsRecord.forEach((payment, i) => {
-      dummyData[`Week-${i + 1}`] = payment;
+    WEEKS.forEach((week, i) => {
+      dummyData[week] = paymentsRecord[i];
     });
 
     dummyData["Total"] = paymentsRecord.reduce((prev, cur) => prev + cur, 0);
