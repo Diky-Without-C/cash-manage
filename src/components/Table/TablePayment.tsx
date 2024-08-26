@@ -61,6 +61,7 @@ export default function Payment({ student }: StudentProps) {
     <>
       {WEEKS.map((_, i) => {
         const payment = payments[i];
+        const input = inputs[i];
         return (
           <td
             key={`${student.id}-${i}`}
@@ -83,7 +84,7 @@ export default function Payment({ student }: StudentProps) {
               <input
                 ref={inputRef}
                 type="text"
-                value={inputs[i] === 0 ? "" : inputs[i]}
+                value={input === 0 ? "" : input}
                 inputMode="numeric"
                 name="payment"
                 onChange={(e) => handleInput(e, i)}
