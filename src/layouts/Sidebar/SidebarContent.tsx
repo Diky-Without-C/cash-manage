@@ -56,7 +56,7 @@ export default function Content() {
         <span className="mx-2">
           <ArrowDownTrayIcon className="size-6" />
         </span>
-        <span className="font-semibold">Download .xlsx</span>
+        <span className="font-semibold">Download file.xlsx</span>
       </div>
     </>
   );
