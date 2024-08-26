@@ -3,7 +3,7 @@ import Table from "@components/Table";
 import { retriveData } from "@lib/firebase/service";
 import { Student } from "@lib/firebase/data.type";
 import useGlobalContext from "@context/globalContext";
-import sortByName from "@utils/sortByName";
+import sortByName from "@pages/Home/utils/sortByName";
 import useLocalStorage from "@hooks/useLocalStorage";
 import data from "@assets/data/students.json";
 
