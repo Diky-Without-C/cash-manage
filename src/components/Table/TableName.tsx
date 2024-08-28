@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
-import Modal from "@components/Modal";
-import { ModalRef, SubmitEvent } from "@components/Modal/modal.type";
+import Modal, { ModalRef, SubmitEvent } from "@components/Modal";
 import useDeleteStudent from "@hooks/useDeleteStudent";
 import useUpdateStudent from "@hooks/useUpdateStudent";
 import isPaymentComplete from "@/utils/isPaymentComplete";
