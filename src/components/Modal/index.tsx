@@ -1,15 +1,38 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
-import { ModalProps } from "./modal.type";
+import React, {
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useState,
+} from "react";
+
+export interface ModalRef {
+  open: () => void;
+  close: () => void;
+  isOpen: boolean;
+}
+
+export type SubmitEvent =
+  | React.KeyboardEvent<HTMLInputElement>
+  | React.MouseEvent<HTMLButtonElement>;
+
+interface ModalProps {
+  onSubmit?: (e: SubmitEvent) => void;
+  children: ReactNode;
+  id?: string;
+}
 
 const Modal = forwardRef(
   ({ onSubmit, children, id = "modal" }: ModalProps, ref) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    useImperativeHandle(ref, () => ({
-      open: () => setIsOpen(true),
-      close: () => setIsOpen(false),
-      isOpen: isOpen,
-    }));
+    useImperativeHandle(
+      ref,
+      (): ModalRef => ({
+        open: () => setIsOpen(true),
+        close: () => setIsOpen(false),
+        isOpen: isOpen,
+      }),
+    );
 
     return (
       <dialog id={id} className={`${isOpen && "modal-open"} modal`}>

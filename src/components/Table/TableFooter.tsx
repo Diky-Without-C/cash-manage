@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
-import Modal from "@components/Modal";
-import { ModalRef, SubmitEvent } from "@components/Modal/modal.type";
+import Modal, { ModalRef, SubmitEvent } from "@components/Modal";
 import useAddStudent from "@hooks/useAddStudent";
 import formatNumber from "@/utils/formatNumber";
 import useGlobalContext from "@context/globalContext";
