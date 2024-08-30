@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import useUserStore from "@lib/zustand/stores/userStore";
+import useTableStore from "@lib/zustand/stores/tableStore";
 import useUpdateStudent from "@hooks/useUpdateStudent";
 import isPaymentComplete from "@/utils/isPaymentComplete";
-import useGlobalContext from "@context/globalContext";
 import { PAYMENT_COST, WEEKS } from "@/constants";
 import { StudentProps } from "./table.type";
 
@@ -10,9 +11,8 @@ export default function Payment({ student }: StudentProps) {
   const payments = [...student.payments];
   const [inputs, setInputs] = useState(payments);
   const handleUpdateStudent = useUpdateStudent();
-  const { getData } = useGlobalContext();
-  const isLogin = getData("isLogin");
-  const isEditActive = getData("isEditActive");
+  const { isLogin } = useUserStore();
+  const { isEditActive } = useTableStore();
 
   const inputRef = useRef<HTMLInputElement>(null);
 

@@ -1,18 +1,17 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
+import useUserStore from "@lib/zustand/stores/userStore";
 import Modal, { ModalRef, SubmitEvent } from "@components/Modal";
 import useDeleteStudent from "@hooks/useDeleteStudent";
 import useUpdateStudent from "@hooks/useUpdateStudent";
 import isPaymentComplete from "@/utils/isPaymentComplete";
-import useGlobalContext from "@context/globalContext";
-import { NameProps } from "./table.type";
+import { TableNameProps } from "./table.type";
 
-export default function Name({ onClick, className, student }: NameProps) {
+export default function Name({ onClick, className, student }: TableNameProps) {
   const [name, setName] = useState("");
   const handleDeleteStudent = useDeleteStudent();
   const handleUpdateStudent = useUpdateStudent();
-  const { getData } = useGlobalContext();
-  const isLogin = getData("isLogin");
+  const { isLogin } = useUserStore();
 
   const modalRef = useRef<ModalRef>(null);
   const inputRef = useRef<HTMLInputElement>(null);

@@ -4,11 +4,7 @@ export type StudentProps = {
   student: Student;
 };
 
-export type StudentsProps = {
-  students: Student[];
-};
-
-export type NameProps = StudentProps & {
+export type TableNameProps = StudentProps & {
   onClick?: () => void;
   className?: string;
   index: number;

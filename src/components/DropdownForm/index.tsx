@@ -1,22 +1,21 @@
 import { ReactNode, useRef, useState } from "react";
-import useGlobalContext from "@context/globalContext";
-import useLocalStorage from "@hooks/useLocalStorage";
+import useUserStore from "@lib/zustand/stores/userStore";
+import { setLocalStorage } from "@services/localStorage";
 
 interface DropdownFormProps {
   children: ReactNode;
 }
 
 export default function DropdownForm({ children }: DropdownFormProps) {
-  const [_, setIsLogin] = useLocalStorage<boolean>("isLogin", false);
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
   const [isCorrect, setIsCorrect] = useState(true);
+  const { setIsLogin } = useUserStore();
 
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { setData } = useGlobalContext();
 
   const handleName = () => {
     if (usernameRef.current) {
@@ -41,15 +40,15 @@ export default function DropdownForm({ children }: DropdownFormProps) {
     ) {
       setIsCorrect(true);
       setForm({ username: "", password: "" });
+
       if (usernameRef.current && passwordRef.current) {
         usernameRef.current.value = "";
         passwordRef.current.value = "";
       }
 
-      setData({ isLogin: true });
       setIsLogin(true);
+      setLocalStorage("isLogin", true);
     } else {
-      setData({ isLogin: false });
       setIsCorrect(false);
     }
   };

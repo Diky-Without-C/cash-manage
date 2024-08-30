@@ -1,14 +1,15 @@
 import { useState } from "react";
+import useStudentsStore from "@lib/zustand/stores/studentsStore";
 import isPaymentComplete from "@/utils/isPaymentComplete";
 import Footer from "./TableFooter";
 import Total from "./TableTotal";
 import Name from "./TableName";
 import Payment from "./TablePayment";
-import { StudentsProps } from "./table.type";
 
-export default function Body({ students }: StudentsProps) {
+export default function Body() {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [isClick, setIsClick] = useState(false);
+  const { students } = useStudentsStore();
 
   const handleClick = (index: number) => {
     const isSelected = selectedIndex === index;
@@ -38,7 +39,7 @@ export default function Body({ students }: StudentsProps) {
         );
       })}
 
-      <Footer students={students} />
+      <Footer />
     </tbody>
   );
 }

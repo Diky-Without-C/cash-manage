@@ -1,9 +1,8 @@
-import useGlobalContext from "@context/globalContext";
+import useStudentsStore from "@lib/zustand/stores/studentsStore";
 import { addData } from "@lib/firebase/service";
-import { Student } from "@lib/firebase/data.type";
 
 export default function useAddStudent() {
-  const { getData } = useGlobalContext();
+  const { students, setStudents } = useStudentsStore();
 
   const handleAddStudent = async (name: string) => {
     const newStudent = {
@@ -15,8 +14,8 @@ export default function useAddStudent() {
       const id = await addData("students", newStudent);
       console.log(`New student added with ID: ${id}`);
 
-      const setStudents = getData("setStudents");
-      setStudents((student: Student[]) => [...student, { id, ...newStudent }]);
+      const updatedStudents = [...students, { id, ...newStudent }];
+      setStudents(updatedStudents);
     } catch (error) {
       console.error("Error adding student:", error);
     }

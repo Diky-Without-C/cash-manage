@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
+import useUserStore from "@lib/zustand/stores/userStore";
 import Sidebar from "@layouts/Sidebar";
-import useGlobalContext from "@context/globalContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { getData } = useGlobalContext();
-  const isLogin = getData("isLogin");
+  const { isLogin } = useUserStore();
 
   return (
     <nav className="navbar relative justify-between bg-neutral">

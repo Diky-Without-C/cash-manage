@@ -4,20 +4,20 @@ import {
   UserCircleIcon,
   WrenchIcon,
 } from "@heroicons/react/24/outline";
+import useUserStore from "@lib/zustand/stores/userStore";
+import useTableStore from "@lib/zustand/stores/tableStore";
 import DropdownForm from "@components/DropdownForm";
 import useDownloadExcel from "@hooks/useDownloadExcel";
-import useGlobalContext from "@context/globalContext";
 
 export default function Content() {
   const [isActive, setIsActive] = useState(false);
   const downloadExcel = useDownloadExcel();
-  const { getData, setData } = useGlobalContext();
-  const isLogin = getData("isLogin");
-  const isEditActive = getData("isEditActive");
+  const { isLogin } = useUserStore();
+  const { isEditActive, setIsEditActive } = useTableStore();
 
   const toggleCustomEdit = () => {
     setIsActive((prev) => !prev);
-    setData({ isEditActive: !isActive });
+    setIsEditActive(!isActive);
   };
 
   return (

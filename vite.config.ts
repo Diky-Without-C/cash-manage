@@ -13,7 +13,6 @@ export default defineConfig({
       "@": setPathName("./src"),
       "@assets": setPathName("./src/assets"),
       "@components": setPathName("./src/components"),
-      "@context": setPathName("./src/context"),
       "@hooks": setPathName("./src/hooks"),
       "@layouts": setPathName("./src/layouts"),
       "@lib": setPathName("./src/lib"),

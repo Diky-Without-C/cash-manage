@@ -1,19 +1,20 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import useUserStore from "@lib/zustand/stores/userStore";
+import useStudentsStore from "@lib/zustand/stores/studentsStore";
 import Modal, { ModalRef, SubmitEvent } from "@components/Modal";
 import useAddStudent from "@hooks/useAddStudent";
 import formatNumber from "@/utils/formatNumber";
-import useGlobalContext from "@context/globalContext";
 import { WEEKS } from "@/constants";
-import { StudentsProps } from "./table.type";
 
-export default function Footer({ students }: StudentsProps) {
+export default function Footer() {
   const [name, setName] = useState("");
+  const { students } = useStudentsStore();
+  const { isLogin } = useUserStore();
+
   const modalRef = useRef<ModalRef>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const handleAddStudent = useAddStudent();
-  const { getData } = useGlobalContext();
-  const isLogin = getData("isLogin");
 
   const totalStudentsPayments = students
     .flatMap((student) => student.payments)
