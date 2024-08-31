@@ -1,5 +1,5 @@
 import Home from "@pages/Home";
-import CashFlow from "@pages/CashFlow";
+import Revenue from "@pages/Revenue";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 
 const routes: RouteObject[] = [
@@ -8,8 +8,8 @@ const routes: RouteObject[] = [
     element: <Home />,
   },
   {
-    path: "/cash-flow/",
-    element: <CashFlow />,
+    path: "/revenue/",
+    element: <Revenue />,
   },
 ];
 
