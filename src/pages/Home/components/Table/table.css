@@ -1,6 +1,6 @@
 :root {
   --primary: #ffffff;
-  --secondary: #e5e7eb;
+  --secondary: #d9d9db;
 }
 
 .table tbody tr:nth-child(odd) {

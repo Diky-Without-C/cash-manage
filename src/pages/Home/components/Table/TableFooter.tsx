@@ -77,7 +77,7 @@ export default function Footer() {
                 autoComplete="off"
                 onChange={(e) => handleInput(e)}
                 onKeyDown={(e) => handleSubmit(e)}
-                className="input input-bordered input-primary w-full rounded-none uppercase"
+                className="input input-bordered input-primary w-full rounded-none uppercase placeholder-shown:capitalize"
               />
             </div>
           </Modal>

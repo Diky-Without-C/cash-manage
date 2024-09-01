@@ -1,6 +1,10 @@
 export function getLocalStorage<T>(key: string, initialValue: T): T {
   const item = localStorage.getItem(key);
-  return item ? JSON.parse(item) : initialValue;
+  try {
+    return item ? JSON.parse(item) : initialValue;
+  } catch {
+    return initialValue;
+  }
 }
 
 export function setLocalStorage<T>(key: string, value: T) {
@@ -8,8 +12,12 @@ export function setLocalStorage<T>(key: string, value: T) {
 }
 
 export default function useLocalStorage<T>(key: string, initialValue: T) {
-  return [
-    getLocalStorage<T>(key, initialValue),
-    (value: T) => setLocalStorage<T>(key, value),
-  ] as const;
+  const storedValue = getLocalStorage<T>(key, initialValue);
+
+  const setValue = (value: T | ((val: T) => T)) => {
+    const valueToStore = value instanceof Function ? value(storedValue) : value;
+    setLocalStorage(key, valueToStore);
+  };
+
+  return [storedValue, setValue] as const;
 }

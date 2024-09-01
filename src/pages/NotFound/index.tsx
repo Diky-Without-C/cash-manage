@@ -1,7 +1,7 @@
 import notfound from "@assets/images/404.svg";
 import { Link } from "react-router-dom";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <main className="flex h-full w-full flex-col items-center justify-center">
       <img src={notfound} className="h-auto w-1/2" />

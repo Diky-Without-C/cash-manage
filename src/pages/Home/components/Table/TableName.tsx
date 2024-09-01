@@ -79,7 +79,7 @@ export default function Name({ onClick, className, student }: TableNameProps) {
             autoComplete="off"
             onChange={(e) => handleInput(e)}
             onKeyDown={(e) => handleSubmit(e, student.id)}
-            className="input input-bordered input-primary w-full rounded-none uppercase"
+            className="input input-bordered input-primary w-full rounded-none uppercase placeholder-shown:capitalize"
           />
         </div>
       </Modal>
