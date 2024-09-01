@@ -8,7 +8,7 @@ interface Revenues {
 }
 
 const useRevenuesStore = create<Revenues>((set) => ({
-  revenues: getLocalStorage<Revenue[]>("Revenues-table", []),
+  revenues: getLocalStorage<Revenue[]>("revenue-table", []),
   setRevenues: (revenues: Revenue[]) => set(() => ({ revenues })),
 }));
 

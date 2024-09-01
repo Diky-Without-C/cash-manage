@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import Table from "./components/Table";
-import { setLocalStorage } from "@services/localStorage";
-import { retriveData } from "@lib/firebase/service";
 import useRevenuesStore from "@lib/zustand/stores/revenuesStore";
+import Table from "./components/Table";
+import { retriveData } from "@lib/firebase/service";
 import { Revenue } from "@lib/firebase/data.type";
+import { setLocalStorage } from "@services/localStorage";
 
 export default function RevenuePage() {
   const { revenues, setRevenues } = useRevenuesStore();
