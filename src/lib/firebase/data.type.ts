@@ -9,7 +9,7 @@ export interface Student {
 export interface Revenue {
   id: string;
   description: string;
-  date: Timestamp;
+  date: Timestamp | Date;
   debit: number;
   credit: number;
 }

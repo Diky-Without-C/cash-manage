@@ -1,8 +1,8 @@
 import { ChangeEvent, useRef, useState, useCallback } from "react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import useUserStore from "@lib/zustand/stores/userStore";
-import useRevenuesStore from "@lib/zustand/stores/revenuesStore";
 import Modal, { ModalRef } from "@components/Modal";
+import useAddRevenue from "@hooks/useAddCredit";
 
 export default function Footer() {
   const [form, setForm] = useState({
@@ -16,6 +16,7 @@ export default function Footer() {
   const descriptionRef = useRef<HTMLInputElement>(null);
   const debitRef = useRef<HTMLInputElement>(null);
   const creditRef = useRef<HTMLInputElement>(null);
+  const handleAddRevenue = useAddRevenue();
 
   const handleInputChange = useCallback(
     (
@@ -37,6 +38,8 @@ export default function Footer() {
 
   const handleSubmit = () => {
     if (!form.description) return;
+    handleAddRevenue(form.description, form.debit, form.credit);
+
     if (descriptionRef.current && debitRef.current && creditRef.current) {
       descriptionRef.current.value = "";
       debitRef.current.value = "";
