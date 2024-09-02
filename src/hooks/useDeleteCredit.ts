@@ -9,7 +9,7 @@ export default function useAddCredit() {
       await deleteData("credit", id);
       console.log(`Credit with id ${id} has been deleted.`);
 
-      const updatedCredits = credits.filter((student) => student.id !== id);
+      const updatedCredits = credits.filter((credit) => credit.id !== id);
       setCredits(updatedCredits);
     } catch (error) {
       console.error("Error deleting credit:", error);
