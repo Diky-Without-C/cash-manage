@@ -68,6 +68,7 @@ export default function Footer() {
             <div className="my-2 flex w-full flex-col gap-2">
               <input
                 ref={descriptionRef}
+                id="content-description"
                 type="text"
                 placeholder="Description"
                 autoComplete="off"
@@ -78,6 +79,7 @@ export default function Footer() {
                 <input
                   ref={debitRef}
                   type="text"
+                  id="content-debit"
                   inputMode="numeric"
                   placeholder="Debit"
                   autoComplete="off"
@@ -87,6 +89,7 @@ export default function Footer() {
                 />
                 <input
                   ref={creditRef}
+                  id="content-credit"
                   type="text"
                   placeholder="Credit"
                   autoComplete="off"
