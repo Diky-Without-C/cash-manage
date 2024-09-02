@@ -1,5 +1,5 @@
-import { Revenue } from "@lib/firebase/data.type";
+import { Credit } from "@lib/firebase/data.type";
 
-export type RevenueProps = {
-  revenue: Revenue;
+export type CreditProps = {
+  credit: Credit;
 };

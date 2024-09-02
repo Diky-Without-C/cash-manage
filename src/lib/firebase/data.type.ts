@@ -6,7 +6,7 @@ export interface Student {
   payments: number[];
 }
 
-export interface Revenue {
+export interface Credit {
   id: string;
   description: string;
   date: Timestamp | Date;

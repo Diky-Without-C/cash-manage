@@ -1,24 +1,24 @@
 import { useEffect } from "react";
-import useRevenuesStore from "@lib/zustand/stores/revenuesStore";
+import useCreditStore from "@lib/zustand/stores/creditsStore";
 import Table from "./components/Table";
 import { retriveData } from "@lib/firebase/service";
-import { Revenue } from "@lib/firebase/data.type";
+import { Credit } from "@lib/firebase/data.type";
 import { setLocalStorage } from "@services/localStorage";
 
 export default function RevenuePage() {
-  const { revenues, setRevenues } = useRevenuesStore();
+  const { credits, setCredits } = useCreditStore();
 
   useEffect(() => {
     async function getData() {
-      const data = await retriveData<Revenue[]>("revenue");
-      if (data && data.length) setRevenues(data);
+      const data = await retriveData<Credit[]>("credit");
+      if (data && data.length) setCredits(data);
     }
     getData();
   }, []);
 
   useEffect(() => {
-    setLocalStorage("revenue-table", revenues);
-  }, [revenues]);
+    setLocalStorage("credit-table", credits);
+  }, [credits]);
 
   return (
     <main className="flex h-full w-full flex-col">

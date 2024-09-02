@@ -1,16 +1,16 @@
-import useRevenuesStore from "@lib/zustand/stores/revenuesStore";
+import useCreditStore from "@lib/zustand/stores/creditsStore";
 import { addData } from "@lib/firebase/service";
 import { serverTimestamp, Timestamp } from "firebase/firestore";
 
-export default function useAddRevenue() {
-  const { revenues, setRevenues } = useRevenuesStore();
+export default function useAddCredit() {
+  const { credits, setCredits } = useCreditStore();
 
-  const handleAddRevenue = async (
+  const handleAddCredit = async (
     description: string,
     debit: number,
     credit: number,
   ) => {
-    const newRevenue = {
+    const newCredit = {
       date: serverTimestamp() as Timestamp,
       debit,
       credit,
@@ -18,15 +18,15 @@ export default function useAddRevenue() {
     };
 
     try {
-      const id = await addData("revenue", newRevenue);
-      console.log(`New Revenue added with id: ${id}`);
+      const id = await addData("credit", newCredit);
+      console.log(`New Credit added with id: ${id}`);
 
-      const updatedRevenues = [...revenues, { id, ...newRevenue }];
-      setRevenues(updatedRevenues);
+      const updatedCredits = [...credits, { id, ...newCredit }];
+      setCredits(updatedCredits);
     } catch (error) {
-      console.error("Error adding revenue:", error);
+      console.error("Error adding new credit:", error);
     }
   };
 
-  return handleAddRevenue;
+  return handleAddCredit;
 }

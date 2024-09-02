@@ -1,15 +1,15 @@
 import { Timestamp } from "firebase/firestore";
-import useRevenuesStore from "@lib/zustand/stores/revenuesStore";
+import useCreditStore from "@lib/zustand/stores/creditsStore";
 import formatDate from "@utils/formatDate";
 import Footer from "./TableFooter";
 import formatNumber from "@utils/formatNumber";
 
 export default function Body() {
-  const { revenues } = useRevenuesStore();
+  const { credits } = useCreditStore();
 
   return (
     <tbody className="bg-white">
-      {revenues?.map((revenue, index) => {
+      {credits?.map((revenue, index) => {
         const { description, date, debit, credit } = revenue;
         const currentDate = formatDate(
           date instanceof Timestamp ? date.toDate() : new Date(),
