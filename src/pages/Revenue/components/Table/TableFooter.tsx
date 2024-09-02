@@ -40,6 +40,7 @@ export default function Footer() {
     if (!form.description) return;
     handleAddCredit(form.description, form.debit, form.credit);
 
+    setForm({ description: "", debit: 0, credit: 0 });
     if (descriptionRef.current && debitRef.current && creditRef.current) {
       descriptionRef.current.value = "";
       debitRef.current.value = "";
