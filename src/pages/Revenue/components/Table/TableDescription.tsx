@@ -3,7 +3,7 @@ import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import useUserStore from "@lib/zustand/stores/userStore";
 import Modal, { ModalRef } from "@components/Modal";
 import useDeleteCredit from "@hooks/useDeleteCredit";
-// import useUpdateStudent from "@hooks/useUpdateStudent";
+import useUpdateCredit from "@hooks/useUpdateCredit";
 import { TableDescriptionProps } from "./table.type";
 
 export default function Description({
@@ -23,7 +23,7 @@ export default function Description({
   const debitRef = useRef<HTMLInputElement>(null);
   const creditRef = useRef<HTMLInputElement>(null);
   const handleDeleteCredit = useDeleteCredit();
-  // const handleUpdateStudent = useUpdateStudent();
+  const handleUpdateCredit = useUpdateCredit();
 
   const handleInputChange = useCallback(
     (
@@ -43,9 +43,13 @@ export default function Description({
     [],
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = (id: string) => {
     if (!form.description) return;
-    // handleAddCredit(form.description, form.debit, form.credit);
+    handleUpdateCredit(id, {
+      description: form.description,
+      debit: form.debit,
+      credit: form.credit,
+    });
 
     setForm({ description: "", debit: 0, credit: 0 });
     if (descriptionRef.current && debitRef.current && creditRef.current) {
@@ -65,6 +69,10 @@ export default function Description({
       debit: credit.debit,
       credit: credit.credit,
     });
+
+    if (descriptionRef.current) {
+      descriptionRef.current.value = credit.description;
+    }
   };
 
   return (
@@ -86,7 +94,11 @@ export default function Description({
         </button>
       </div>
       <div className="text-md font-semibold">{credit.description}</div>
-      <Modal id="addStudentModal" ref={modalRef} onSubmit={handleSubmit}>
+      <Modal
+        id="addStudentModal"
+        ref={modalRef}
+        onSubmit={() => handleSubmit(credit.id)}
+      >
         <h3 className="text-lg font-bold">Add new content</h3>
         <div className="my-2 flex w-full flex-col gap-2">
           <input
