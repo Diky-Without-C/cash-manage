@@ -1,0 +1,12 @@
+:root {
+  --primary: #ffffff;
+  --secondary: #d9d9db;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: var(--primary);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--secondary);
+}
