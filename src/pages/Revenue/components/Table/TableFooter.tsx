@@ -21,7 +21,7 @@ export default function Footer() {
   const handleInputChange = useCallback(
     (
       event: ChangeEvent<HTMLInputElement>,
-      field: "description" | "debit" | "credit",
+      field: "description" | "debit" | "credit"
     ) => {
       const value =
         field === "description"
@@ -33,7 +33,7 @@ export default function Footer() {
         [field]: field === "description" ? value : Number(value),
       }));
     },
-    [],
+    []
   );
 
   const handleSubmit = () => {

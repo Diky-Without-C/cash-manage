@@ -24,7 +24,7 @@ export default function Body() {
         return (
           <tr key={student.id}>
             <td
-              className={`${isPaymentComplete(student.payments) && "bg-green-600 text-white"} text-ms border text-center`}
+              className={`${isPaymentComplete(student.payments) && "bg-green-600 text-white"} border text-center`}
             >
               <span className="mx-auto px-2 font-semibold">{index + 1}</span>
             </td>
