@@ -9,7 +9,7 @@ export default function Total({ student }: StudentProps) {
     <td
       className={`${isPaymentComplete(student.payments) && "bg-green-600 text-white"} font-semibold border text-right text-gray-900`}
     >
-      <span className="text-lg">{formatNumber(total)}</span>
+      <span className="text-base">{formatNumber(total)}</span>
     </td>
   );
 }

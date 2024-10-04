@@ -63,7 +63,7 @@ export default function Name({ onClick, className, student }: TableNameProps) {
           <TrashIcon className="size-5" />
         </button>
       </div>
-      <div className="text-md font-semibold uppercase">{student.name}</div>
+      <div className="font-semibold uppercase">{student.name}</div>
       <Modal
         id="editStudentModal"
         ref={modalRef}

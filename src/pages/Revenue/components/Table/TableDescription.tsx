@@ -28,7 +28,7 @@ export default function Description({
   const handleInputChange = useCallback(
     (
       event: ChangeEvent<HTMLInputElement>,
-      field: "description" | "debit" | "credit",
+      field: "description" | "debit" | "credit"
     ) => {
       const value =
         field === "description"
@@ -40,7 +40,7 @@ export default function Description({
         [field]: field === "description" ? value : Number(value),
       }));
     },
-    [],
+    []
   );
 
   const handleSubmit = (id: string) => {
@@ -93,7 +93,9 @@ export default function Description({
           <TrashIcon className="size-5" />
         </button>
       </div>
-      <div className="text-md font-semibold">{credit.description}</div>
+      <div className="font-semibold text-lg capitalize">
+        {credit.description}
+      </div>
       <Modal
         id="addStudentModal"
         ref={modalRef}
